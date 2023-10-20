@@ -4,7 +4,12 @@ const WeatherCard = ({data}) => {
     const weatherData = data        
     console.log(weatherData);
     return (
-    <div>  </div>
+    <section className='container-fluid d-flex flex-column justify-content-center align-items-center mt-4'>
+        <p className='m-0'> {weatherData.temperatura}°C, {weatherData.nombreCiudad}, {weatherData.region}, {weatherData.pais}</p>
+        <div>
+            <img src={weatherData.icono} />
+        </div>
+    </section>
   )
 }
 

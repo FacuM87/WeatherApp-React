@@ -1,9 +1,11 @@
-.form{
-    height: 100vh;
+.cont{
+    height: 95vh;
     top: 50vh;
 }
 
 .small{
+    display: block;
     font-size: smaller;
-    color: rgb(182, 182, 182);
+    color: rgb(165, 164, 164);
+    text-align: center;
 }

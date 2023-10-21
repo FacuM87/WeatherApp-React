@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import "./Form.css"
 import WeatherCard from '../WeatherCard/WeatherCard'
 
 
 const Form = () => {
      
-    const apiUrl="http://api.weatherapi.com/v1/current.json?key=5e92979a14bf4ee9a40181648231910&q="
+    const apiUrl="https://api.weatherapi.com/v1/current.json?key=5e92979a14bf4ee9a40181648231910&q="
     const [ciudad, setCiudad] = useState("")
     const [loader, setLoader] = useState(false)
     const [weatherData, setData] = useState({

@@ -6,8 +6,8 @@ React Project made for data fetching practice. <br>
 - Deployed by <a href="https://vercel.com">Vercel</a>.
 
 # Coming next
-
-- Weather forecast rendered in front page.<br>
+- Stetic improvements in front page. 
+- Include Weather forecast feature.
 - Geolocalization and video-background according to user location weather.
 
 

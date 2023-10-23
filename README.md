@@ -7,8 +7,8 @@ React Project made for data fetching practice. <br>
 
 # Coming next
 - Stetic improvements in front page. 
-- Consume API from a backend server created with Express JS in order to improve security avoiding to show API Key at frontend.
 - Include Weather forecast feature.
+- Consume API from a backend server created with Express JS in order to improve security avoiding to show API Key at frontend.
 - Geolocalization and video-background according to user location weather.
 
 

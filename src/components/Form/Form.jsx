@@ -48,7 +48,7 @@ const Form = () => {
                 <section className='container-fluid d-flex flex-column justify-content-center align-items-center'>
                     <h1>My Weather App</h1>
                     <form onSubmit={handleOnSubmit} className='d-flex flex-column w-50 justify-content-center align-items-center'>
-                        <input required type='text' className='mb-2 form-control' placeholder='Enter a city name' onChange={(e) => setCiudad(e.target.value)}></input>
+                        <input name='city' required type='text' className='mb-2 form-control' placeholder='Enter a city name' onChange={(e) => setCiudad(e.target.value)}></input>
                         {!loader? (<button type='submit' className='btn btn-primary w-50'> Search </button>):(
                             <button className="btn btn-primary" type="button" disabled>
                                 <span className="spinner-border spinner-border-sm" aria-hidden="true"></span>
@@ -59,7 +59,6 @@ const Form = () => {
                 </section>
                 {weatherData.nombreCiudad && <WeatherCard data={weatherData} />}
             </div>
-            <small className='small'> Powered by <a href="https://www.weatherapi.com/" title="Free Weather API">WeatherAPI.com</a> </small>
         </main>
     )
 }

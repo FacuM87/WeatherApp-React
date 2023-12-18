@@ -56,14 +56,12 @@ const GeoLocationComponent = () => {
 	console.log(geoData);
 
   return (
-    <header>
-        <div className=''>
+    <header className='text-end me-3'>
 			{location ? (
 				<p><img src={geoData.icono} alt="icono"/>{geoData.temperatura}°C, {geoData.nombreCiudad}, {geoData.region}, {geoData.pais}</p>
 			) : (
 				<p>Getting location...</p>
 			)}
-        </div>
     </header>
   );
 };

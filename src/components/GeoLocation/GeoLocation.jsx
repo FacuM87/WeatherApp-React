@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import "./GeoLocation.css"
 
 const GeoLocationComponent = () => {
   const [location, setLocation] = useState(null);

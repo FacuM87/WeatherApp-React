@@ -6,6 +6,36 @@
     color: antiquewhite;
 }
 
+/* svg {    
+    border: 2px solid;
+}
+
+svg text{
+    font-weight: 800;
+    stroke: antiquewhite;
+    stroke-width: 1px;
+    stroke-dasharray: 5 32%;
+    animation: forwards 8s strokeAnimation;
+}
+
+@keyframes strokeAnimation {
+    0%{
+        fill: transparent;
+    }
+    50%{
+        stroke-dashoffset: 25%;
+        stroke-dasharray: 32% 0
+    }
+    80%{
+        stroke-dashoffset: 25%;
+        stroke-dasharray: 32% 0
+    }
+    100%{
+        stroke-dashoffset: 25%;
+        stroke-dasharray: 32% 0
+    }
+}
+ */
 
 
 

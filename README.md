@@ -8,7 +8,7 @@ React Project made for data fetching practice. <br>
 # Coming next
 - Stetic improvements in front page. 
 - Include Weather forecast feature.
-- Consume API from a backend server created with Express JS.
+- A backend server made in node for users login with Mongo DB as data base.
 - Geolocation and video-background according to user location weather.
 
 

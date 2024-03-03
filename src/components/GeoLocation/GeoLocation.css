@@ -1,3 +1,8 @@
 header p{
     color: antiquewhite;
+    margin-bottom: 0;
+}
+
+header{
+    z-index: 100;
 }

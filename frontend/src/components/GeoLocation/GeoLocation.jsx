@@ -40,13 +40,13 @@ const GeoLocationComponent = () => {
 	}, []);
 
 	useEffect(() => {
+		const apiUrl = process.env.REACT_APP_API_URL
 		if (location) {
 		const geolocation = `${location.latitude},${location.longitude}`;
-		console.log(geolocation);
-		fetch(`https://api.weatherapi.com/v1/current.json?key=5e92979a14bf4ee9a40181648231910&q=${geolocation}#`)
+		const apiUrlGeo = apiUrl+geolocation
+		fetch(`${apiUrlGeo}#`)
 		.then(response => {return response.json()})
 		  .then(data => {
-			console.log(data)
 			setgeoData({
 				nombreCiudad:data.location.name,
 				pais:data.location.country,

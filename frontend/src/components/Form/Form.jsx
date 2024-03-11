@@ -46,11 +46,6 @@ const Form = () => {
         <main>
             <div className='cont d-flex flex-column justify-content-center align-items-center'>
                 <section className='container-fluid d-flex flex-column justify-content-center align-items-center'>
-{/*                     <svg viewBox='0 0 520 50'>
-                        <text x="50%" y="50%" dy="5px" textAnchor='middle' fill='transparent'>
-                            My Weather App
-                        </text>
-                    </svg> */}
                     <h1>My Weather App</h1>
                     <form onSubmit={handleOnSubmit} className='d-flex flex-column w-50 justify-content-center align-items-center'>
                         <input name='city' required type='text' className='mb-2 form-control' placeholder='Enter a city name' onChange={(e) => setCiudad(e.target.value)}></input>

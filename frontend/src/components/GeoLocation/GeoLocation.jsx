@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import "./GeoLocation.css"
+import LoginModal from '../LoginModal/LoginModal';
+import RegisterModal from '../RegisterModal/RegisterModal';
 
 const GeoLocationComponent = () => {
   const [location, setLocation] = useState(null);
@@ -12,6 +14,14 @@ const GeoLocationComponent = () => {
 	texto:"",
 	icono:""
   })
+  const [loginModal, setLoginModal] = useState(false)
+  const [registerModal, setRegisterModal] = useState(false)
+  const handleLoginModal = () => {
+	(loginModal === false) ? setLoginModal(true) : setLoginModal(false)
+  }
+  const handleRegisterModal = () => {
+	(registerModal === false) ? setRegisterModal(true) : setRegisterModal(false)
+  }
   
   useEffect(() => {
       if (navigator.geolocation) {
@@ -57,12 +67,18 @@ const GeoLocationComponent = () => {
 	console.log(geoData);
 
   return (
-    <header className='text-start'>
-			{location ? (
+    <header className='d-flex justify-content-between'>
+		<div className='text-start'>
+			{location && (
 				<p><img src={geoData.icono} alt="icono"/>{geoData.temperatura}°C, {geoData.region}, {geoData.pais}</p>
-			) : (
-				<p>Getting location...</p>
 			)}
+		</div>
+		<div className='me-3'>
+        	<button className='loginButton mt-2 me-2' onClick={handleLoginModal}> Login </button>
+        	<button className='registerButton' onClick={handleRegisterModal}> Register </button>
+			{loginModal && <LoginModal closeModal = {setLoginModal} />}
+			{registerModal && <RegisterModal closeModal = {setRegisterModal} />}		
+    	</div>		
     </header>
   );
 };

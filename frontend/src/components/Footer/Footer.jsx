@@ -4,7 +4,7 @@ import "./Footer.css"
 const Footer = () => {
   return (
     <footer>
-        <small className='small'> Powered by <a href="https://www.weatherapi.com/" title="Free Weather API">WeatherAPI.com</a> </small>
+        <small className='small'> Powered by <a target='blanc' href="https://www.weatherapi.com/" title="Free Weather API">WeatherAPI.com</a> </small>
     </footer>
   )
 }

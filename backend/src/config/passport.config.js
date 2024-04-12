@@ -7,7 +7,6 @@ import config from "./config.js"
 import MongoUserManager from "../dao/mongo/managers/users.manager.js"
 
 
-
 const LocalStrategy = local.Strategy
 const JWTStrategy = passportJWT.Strategy
 const GoogleStrategy = passportGoogle.Strategy;
@@ -45,7 +44,6 @@ const initializePassport = () => {
         passReqToCallback: true,
         usernameField: "email"
     }, async (req, username, password, done) =>{
-        console.log("entraste acá");
         const { first_name, last_name, email, age } = req.body
         try {
             const user = await MongoManager.getUserByEmail(username)
@@ -54,7 +52,7 @@ const initializePassport = () => {
                 console.log("That email address is already registered");
                 return done(null, false)
             }
-            
+
             const newUser = {
                 first_name,
                 last_name,

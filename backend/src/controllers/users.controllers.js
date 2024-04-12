@@ -14,7 +14,7 @@ export const login = async (req, res) =>{
 
 export const register = async (req, res) =>{
     try {
-        return res.status(201).json({status: "register success"})
+        return res.status(201).json({status: "success"})
     } catch (error) {
         console.log("Register Error: "+error);
         return res.status(500).send("Internal server error. Couldnt register")

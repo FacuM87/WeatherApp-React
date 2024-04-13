@@ -24,8 +24,8 @@ export const register = async (req, res) =>{
 export const logout = (req, res) => {
     try {
         res.clearCookie('jwt')
-        return res.redirect("/")      
+        return res.status(200).json({status: "success"})    
     } catch (error) {
-        return res.status(500).send("Internal server error. Logout failure")
+        return res.status(500).json({status:"fail", message: "Internal server error. Logout failure"})
     }
 }

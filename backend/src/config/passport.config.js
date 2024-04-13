@@ -30,8 +30,10 @@ const initializePassport = () => {
             const token = generateToken(user)
             user.token = token
 
-            done(null, user)
-            
+            const changes = {last_connection: new Date()}
+            await MongoManager.updateUser(username, changes)
+
+            done(null, user)      
         } catch (error) {
             return done("Passport Login Error: " + error)
         }

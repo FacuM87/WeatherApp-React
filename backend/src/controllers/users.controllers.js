@@ -29,3 +29,13 @@ export const logout = (req, res) => {
         return res.status(500).json({status:"fail", message: "Internal server error. Logout failure"})
     }
 }
+
+export const getUserById = async (req, res) => {
+    
+}
+export const updateUser = async (req, res) => {
+
+}
+export const deleteUserById = async (req, res) => {
+
+}

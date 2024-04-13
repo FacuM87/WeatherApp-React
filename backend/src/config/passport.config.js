@@ -29,7 +29,7 @@ const initializePassport = () => {
 
             const token = generateToken(user)
             user.token = token
-
+            
             const changes = {last_connection: new Date()}
             await MongoManager.updateUser(username, changes)
 

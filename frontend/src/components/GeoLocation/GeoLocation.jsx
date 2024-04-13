@@ -63,9 +63,6 @@ const GeoLocationComponent = () => {
 		}
 	}, [location]);
 
-	console.log(location);
-	console.log(geoData);
-
   return (
     <header className='d-flex justify-content-between'>
 		<div className='text-start'>

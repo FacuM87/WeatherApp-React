@@ -4,7 +4,7 @@ import passport from "passport";
 
 const router = Router()
 
-router.post("/login", passport.authenticate("login", {session: false}, {failureRedirect:"/"}), login)
+router.post("/login", passport.authenticate("login", {session: false}), login)
 router.post("/register", passport.authenticate("register", {session: false}), register)
 
 router.get("/logout", logout)

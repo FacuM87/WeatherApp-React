@@ -18,14 +18,12 @@ const initializePassport = () => {
         usernameField: "email"
     }, async (username, password, done) => {
         try {
+            console.log("pasando por passport");
             const user = await MongoManager.getUserByEmail(username)
-            if (!user) {
-                console.log("No users registered with that email address");
-                return done(null, false)
-            }
 
-            if(!validatePassword(password, user)){
+            if(!user || !validatePassword(password, user)){
                 console.log("Invalid Credentials");
+
                 return done(null, false)
             }
 

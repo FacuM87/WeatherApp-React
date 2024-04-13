@@ -3,12 +3,10 @@ import "./RegisterModal.css"
 
 const RegisterModal = ({closeModal}) => {
 
-
   	const handleOnSubmit = async (e) =>{
 		e.preventDefault()
 
 		const fetchUrl = process.env.REACT_APP_API_REGISTER_URL
-		console.log(fetchUrl);
 		try {
 			const response = await fetch(fetchUrl,{
 				method: "post",
@@ -24,11 +22,10 @@ const RegisterModal = ({closeModal}) => {
 				})
 			})
 			const data = await response.json()
-			console.log({data});
 			console.log(data.status);
 
 		} catch (error) {
-			
+			console.log(error);
 		}
   	}
 

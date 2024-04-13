@@ -12,7 +12,7 @@ export default class Mail {
             }
     })}
 
-    sendRegisterConfirmationMail = async (first_name, email) => {
+    sendRegisterConfirmationMail = async (first_name, email, password) => {
         const options = {
             from: config.mailUser,
             to: email,
@@ -22,10 +22,13 @@ export default class Mail {
                     <br>
                     <h2>Your registration process has been successful!</h2>
                     <br>
+                    <h3>You can now login with your credentials: </h3>
                     <br>
-                    <h3>You can now login with your credentials</h3>
+                    <p><strong>User:</strong> ${email}</p>
+                    <p><strong>Password:</strong> ${password}</p>
                     <br>
-                    <p>Thanks for choosing us!</p>
+                    <p>Thanks for choosing <strong>My Weather App!</strong></p>
+                    <small>Developed by Facu!</small>
                     `
         }
 

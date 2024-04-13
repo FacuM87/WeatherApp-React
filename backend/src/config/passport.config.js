@@ -64,7 +64,7 @@ const initializePassport = () => {
             const result = await MongoManager.createUser(newUser)
 
             const mailer = new Mail
-            mailer.sendRegisterConfirmationMail(first_name, email)
+            mailer.sendRegisterConfirmationMail(first_name, email, password)
 
             console.log(result);
             return done(null, result)

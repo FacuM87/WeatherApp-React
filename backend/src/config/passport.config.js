@@ -5,6 +5,7 @@ import local from "passport-local"
 import { createHash, generateToken, validatePassword } from "../utils.js"
 import config from "./config.js"
 import MongoUserManager from "../dao/mongo/managers/users.manager.js"
+import Mail from "../modules/mailer.config.js"
 
 
 const LocalStrategy = local.Strategy
@@ -61,6 +62,10 @@ const initializePassport = () => {
             console.log(newUser);
     
             const result = await MongoManager.createUser(newUser)
+
+            const mailer = new Mail
+            mailer.sendRegisterConfirmationMail(first_name, email)
+
             console.log(result);
             return done(null, result)
         } catch (error) {

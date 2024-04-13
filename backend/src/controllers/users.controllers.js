@@ -2,7 +2,6 @@
 
 export const login = async (req, res) =>{
     try {
-        console.log("llegando acá");
         if (!req.user) return res.status(401).json({status: "fail", message: "Invalid Credentials"})
         console.log(req.user);
         const { token } = req.user
@@ -18,7 +17,7 @@ export const register = async (req, res) =>{
         return res.status(201).json({status: "success"})
     } catch (error) {
         console.log("Register Error: "+error);
-        return res.status(500).send("Internal server error. Couldnt register")
+        return res.status(500).json({status: "critic fail", message: "Internal server error. Couldnt login."})
     }
 }
 

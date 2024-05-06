@@ -1,6 +1,7 @@
 import { Router} from "express";
 import { login, register, logout, getUserById, updateUser, deleteUserById } from "../controllers/users.controllers.js";
 import passport from "passport";
+import { auth } from "../middlewares/auth.middleware.js";
 
 const router = Router()
 
@@ -10,7 +11,7 @@ router.get("/logout", logout)
 router.post("/register", passport.authenticate("register", {session: false}), register)
 
 // USERS CRUD (admin only) //
-router.get("/:uid", getUserById)
+router.get("/:uid", passport.authenticate("jwt", {session: false}), auth, getUserById)
 router.patch("/:uid", updateUser)
 router.delete("/:uid", deleteUserById)
 

@@ -20,13 +20,11 @@ const Form = () => {
 
     const handleOnSubmit = async (e) => {
             e.preventDefault()
-            console.log(ciudad)
             setLoader(true)
     
             try {
                 const response = await fetch(apiUrl+ciudad)
                 const data = await response.json() 
-                console.log(data);
                 setData({
                     nombreCiudad:data.location.name,
                     pais:data.location.country,

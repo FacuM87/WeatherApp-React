@@ -1,4 +1,4 @@
-# Weather App created with React JS
+# Weather App created with MERN Stack
 
 Full Stack MERN Project made for practice. <br>
 - Powered by <a href="https://www.weatherapi.com/">WeatherAPI.com</a>.

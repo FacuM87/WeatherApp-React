@@ -12,6 +12,7 @@
 .loginModalContent{
     width: fit-content;
     height: fit-content;
+    min-width: 400px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -40,15 +41,13 @@
 
 .closeLoginModal-container{
     text-align: right;
-    top: 0%;
 }
 
 .closeLoginModalBtn{
     border: none;
     background-color: transparent;
-    color: black;
-    margin-top: 10px;
+    color: rgb(179, 179, 179);
     margin-bottom: 10px;
     border-radius: 10px;
-    padding: 10px;
+    padding: 0
 }

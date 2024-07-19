@@ -35,11 +35,11 @@ const LoginModal = ({ closeModal }) => {
                 </div>
                 <form className="d-flex flex-column" onSubmit={handleOnSubmit}> 
                     <div className="form-floating mb-3">
-                        <input type="email" className="form-control" id="email" name="email" placeholder="Your email goes here"/>
+                        <input type="email" className="form-control" id="email" name="email" placeholder="Your email goes here" autoComplete="on"/>
                         <label htmlFor="email">Email address</label>
                         </div>
                     <div className="form-floating">
-                        <input type="password" className="form-control" id="password" name="password" placeholder="Password"/>
+                        <input type="password" className="form-control" id="password" name="password" placeholder="Password" autoComplete="on"/>
                         <label htmlFor="password">Password</label>
                     </div>
                     <button type="submit" className="loginBtn"> Login! </button>

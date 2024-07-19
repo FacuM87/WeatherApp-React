@@ -16,5 +16,39 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    background-color: aliceblue;
+    border-radius: 10px;
 
+}
+
+.loginBtn{
+    border: none;
+    background-color: white;
+    color: black;
+    width: 50%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    transition: all ease-in-out 0.2s;
+}
+
+.loginBtn:hover{
+    background-color:rgb(165, 223, 242);
+}
+
+.closeLoginModal-container{
+    text-align: right;
+    top: 0%;
+}
+
+.closeLoginModalBtn{
+    border: none;
+    background-color: transparent;
+    color: black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 10px;
 }

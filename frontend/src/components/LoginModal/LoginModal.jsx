@@ -29,8 +29,10 @@ const LoginModal = ({ closeModal }) => {
     return (
         <div className="loginModalContainer">
         
-            <div className="loginModalContent">
-                <button onClick={() => closeModal(false)}> X </button>
+            <div className="loginModalContent p-3">
+                <div className="closeLoginModal-container">
+                    <button onClick={() => closeModal(false)} className="closeLoginModalBtn"> X </button>
+                </div>
                 <form className="d-flex flex-column" onSubmit={handleOnSubmit}> 
                     <div className="form-floating mb-3">
                         <input type="email" className="form-control" id="email" name="email" placeholder="Your email goes here"/>
@@ -40,7 +42,7 @@ const LoginModal = ({ closeModal }) => {
                         <input type="password" className="form-control" id="password" name="password" placeholder="Password"/>
                         <label htmlFor="password">Password</label>
                     </div>
-                        <button type="submit"> Login! </button>
+                    <button type="submit" className="loginBtn"> Login! </button>
                 </form>
             </div>
         </div>

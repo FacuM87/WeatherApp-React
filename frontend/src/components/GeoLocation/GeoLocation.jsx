@@ -73,8 +73,8 @@ const GeoLocationComponent = () => {
 		<div className='me-3'>
         	<button className='loginButton mt-2 me-2' onClick={handleLoginModal}> Login </button>
         	<button className='registerButton' onClick={handleRegisterModal}> Register </button>
-			{loginModal && <LoginModal closeModal = {setLoginModal} />}
-			{registerModal && <RegisterModal closeModal = {setRegisterModal} />}		
+			{loginModal && <LoginModal closeModal = {setLoginModal} openRegisterModal = {setRegisterModal}/>}
+			{registerModal && <RegisterModal closeModal = {setRegisterModal} openLoginModal = {setLoginModal}/>}		
     	</div>		
     </header>
   );

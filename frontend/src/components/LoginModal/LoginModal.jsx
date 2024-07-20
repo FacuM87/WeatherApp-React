@@ -1,7 +1,9 @@
 import React from "react"
+import googleIcon from "../../assets/googleIcon.png"
+import fbIcon from "../../assets/fbIcon.png"
 import "./LoginModal.css"
 
-const LoginModal = ({ closeModal }) => {
+const LoginModal = ({ closeModal, openRegisterModal }) => {
 
     const handleOnSubmit = async (e) =>{
         e.preventDefault()
@@ -29,11 +31,13 @@ const LoginModal = ({ closeModal }) => {
     return (
         <div className="loginModalContainer">
         
-            <div className="loginModalContent p-3">
+            <div className="loginModalContent">
                 <div className="closeLoginModal-container">
                     <button onClick={() => closeModal(false)} className="closeLoginModalBtn"> X </button>
                 </div>
-                <form className="d-flex flex-column" onSubmit={handleOnSubmit}> 
+
+                <h1 className="text-center">Login</h1>
+                <form className="d-flex flex-column p-3" onSubmit={handleOnSubmit}> 
                     <div className="form-floating mb-3">
                         <input type="email" className="form-control" id="email" name="email" placeholder="Your email goes here" autoComplete="on"/>
                         <label htmlFor="email">Email address</label>
@@ -43,6 +47,25 @@ const LoginModal = ({ closeModal }) => {
                         <label htmlFor="password">Password</label>
                     </div>
                     <button type="submit" className="loginBtn"> Login! </button>
+                    <div className="otherOptions-container">
+                        <div >
+                            <button type="button" onClick={() => { closeModal(false); openRegisterModal(true); }} className="registerBtn"><p>Don't have an account?</p></button>
+                        </div>
+                        <div >
+                            <a href="http://"><p className="forgotPassword">Forgot password?</p></a>
+                        </div>
+                    </div>
+                    <div className="separator"></div>
+                    <div className="socialButtons">
+                        <button className="socialButton googleButton">
+                            <img src={googleIcon} alt="Google Icon" className="me-1"/>
+                            <p className="text-dark">Google</p>  
+                        </button>
+                        <button className="socialButton facebookButton">
+                            <img src={fbIcon} alt="Facebook Icon" className="me-1"/>
+                            <p className="text-dark">Facebook</p>
+                            </button>
+                    </div>
                 </form>
             </div>
         </div>

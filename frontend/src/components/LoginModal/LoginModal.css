@@ -12,12 +12,12 @@
 .loginModalContent{
     width: fit-content;
     height: fit-content;
-    min-width: 400px;
+    min-width: 500px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: aliceblue;
+    background-color: rgb(217, 224, 230);
     border-radius: 10px;
 
 }
@@ -36,7 +36,7 @@
 }
 
 .loginBtn:hover{
-    background-color:rgb(165, 223, 242);
+    background-color: #bcc5cd;
 }
 
 .closeLoginModal-container{
@@ -46,8 +46,93 @@
 .closeLoginModalBtn{
     border: none;
     background-color: transparent;
-    color: rgb(179, 179, 179);
+    color: rgb(122, 120, 120);
     margin-bottom: 10px;
     border-radius: 10px;
-    padding: 0
+    padding: 5px 10px;
+}
+
+
+.separator {
+    border-top: 1px solid #716f6f;
+    margin: 10px 0;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+.socialButtons {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.socialButton {
+    width: 45%;
+    padding: 10px;
+    background-color: #dcdcdc;
+    border: 1px solid #888787;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.googleButton {
+    display: flex;
+    background-color: #F0F8FF;
+    justify-content: center;
+    align-items: center;
+    transition: all ease-in-out 0.2s;
+}
+
+.googleButton:hover {
+    background-color: #bcc5cd;
+}
+
+.googleButton img {
+    width: 25px;
+    height: 25px;
+}
+
+.facebookButton {
+    display: flex;
+    background-color: #F0F8FF;
+    justify-content: center;
+    align-items: center;
+    transition: all ease-in-out 0.2s;
+}
+
+.facebookButton:hover {
+    background-color: #bcc5cd;
+}
+
+.facebookButton img {
+    width: 30px;
+    height: 30px;
+}
+
+.otherOptions-container {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.otherOptions-container div:nth-child(1) button {
+    border: none;
+    background-color: transparent;
+}
+
+.otherOptions-container p {
+    margin-bottom: 0;
+    color: rgb(77, 77, 248);
+}
+
+.otherOptions-container a {
+    text-decoration: none;
 }

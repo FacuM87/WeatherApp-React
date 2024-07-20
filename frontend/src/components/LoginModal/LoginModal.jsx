@@ -3,7 +3,7 @@ import googleIcon from "../../assets/googleIcon.png"
 import fbIcon from "../../assets/fbIcon.png"
 import "./LoginModal.css"
 
-const LoginModal = ({ closeModal, openRegisterModal }) => {
+const LoginModal = ({ closeModal, openRegisterModal, session }) => {
 
     const handleOnSubmit = async (e) =>{
         e.preventDefault()
@@ -21,7 +21,10 @@ const LoginModal = ({ closeModal, openRegisterModal }) => {
             })
             const data = await response.json()
             console.log(data.status);
-            (data.status === "success") && closeModal(false)
+            if (data.status === "success") {
+                session(true);
+                closeModal(false);
+            }
             console.log("TOKEN: ",data.jwt);
         } catch (error) {
             console.error("Login error: ",error);
@@ -56,6 +59,7 @@ const LoginModal = ({ closeModal, openRegisterModal }) => {
                         </div>
                     </div>
                     <div className="separator"></div>
+                    <p className="text-center text-dark mb-2">or sign in with:</p>
                     <div className="socialButtons">
                         <button className="socialButton googleButton">
                             <img src={googleIcon} alt="Google Icon" className="me-1"/>

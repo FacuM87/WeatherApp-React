@@ -16,6 +16,8 @@ const GeoLocationComponent = () => {
   })
   const [loginModal, setLoginModal] = useState(false)
   const [registerModal, setRegisterModal] = useState(false)
+  const [sessionRunning, setSessionRunning] = useState(false)
+
   const handleLoginModal = () => {
 	(loginModal === false) ? setLoginModal(true) : setLoginModal(false)
   }
@@ -70,12 +72,19 @@ const GeoLocationComponent = () => {
 				<p><img src={geoData.icono} alt="icono"/>{geoData.temperatura}°C, {geoData.region}, {geoData.pais}</p>
 			)}
 		</div>
-		<div className='me-3'>
-        	<button className='loginButton mt-2 me-2' onClick={handleLoginModal}> Login </button>
-        	<button className='registerButton' onClick={handleRegisterModal}> Register </button>
-			{loginModal && <LoginModal closeModal = {setLoginModal} openRegisterModal = {setRegisterModal}/>}
-			{registerModal && <RegisterModal closeModal = {setRegisterModal} openLoginModal = {setLoginModal}/>}		
-    	</div>		
+		{sessionRunning ? (
+			<div>
+				Welcome
+			</div>
+			) : (
+			<div className='me-3'>
+				<button className='loginButton mt-2 me-2' onClick={handleLoginModal}> Login </button>
+				<button className='registerButton' onClick={handleRegisterModal}> Register </button>
+				{loginModal && <LoginModal closeModal = {setLoginModal} openRegisterModal = {setRegisterModal} session = {setSessionRunning}/>}
+				{registerModal && <RegisterModal closeModal = {setRegisterModal} openLoginModal = {setLoginModal}/>}		
+			</div>		
+			)
+		}
     </header>
   );
 };

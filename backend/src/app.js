@@ -16,7 +16,9 @@ app.use(cookieParser())
 
 /* CORS */
 const allowedOrigin = config.origin
-app.use(cors({credentials: true, origin: allowedOrigin}))
+console.log(allowedOrigin);
+//app.use(cors({credentials: true, origin: allowedOrigin}))
+app.use(cors())
 
 /* Mongo DB connection */
 mongoose.connect(config.mongoUrl, {dbName: "weather-app"})

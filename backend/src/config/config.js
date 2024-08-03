@@ -13,11 +13,8 @@ const config = {
     mailService: process.env.MAIL_SERVICE,
     mailUser: process.env.MAIL_USER,
     mailPass: process.env.MAIL_PASS,
-    mailPort: process.env.MAIL_PORT
-}
-
-if (config.env === "dev") {
-    config.origin = process.env.DEV_ALLOWED_ORIGIN
+    mailPort: process.env.MAIL_PORT,
+    origin: process.env.DEV_ALLOWED_ORIGIN
 }
 
 if (process.env.NODE_ENV === "production") {

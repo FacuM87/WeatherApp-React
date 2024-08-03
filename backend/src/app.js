@@ -14,10 +14,6 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
 
-const port=config.port
-
-app.listen(port, () => console.log("Server running on port "+port))
-
 /* CORS */
 const allowedOrigin = config.origin
 app.use(cors({credentials: true, origin: allowedOrigin}))
@@ -43,3 +39,6 @@ app.get("/", (req, res) => {
     res.send("API is running...")
 })
 app.use("/api/users", usersRouter)
+
+const port=config.port
+app.listen(port, () => console.log("Server running on port "+port))

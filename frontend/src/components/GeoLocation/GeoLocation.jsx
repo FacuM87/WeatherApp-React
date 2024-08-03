@@ -45,7 +45,7 @@ const GeoLocationComponent = () => {
 	}, []);
 
 	useEffect(() => {
-		const apiUrl = config.weather_api_url //process.env.REACT_APP_API_URL
+		const apiUrl = config.weather_api_url
 		if (location) {
 		const geolocation = `${location.latitude},${location.longitude}`;
 		const apiUrlGeo = apiUrl+geolocation

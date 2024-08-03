@@ -10,7 +10,7 @@ const Form = () => {
 
     const dispatch = useDispatch()
      
-    const apiUrl= config.weather_api_url //process.env.REACT_APP_API_URL
+    const apiUrl= config.weather_api_url 
     const [ciudad, setCiudad] = useState("")
     const [loader, setLoader] = useState(false)
     const [weatherData, setData] = useState({

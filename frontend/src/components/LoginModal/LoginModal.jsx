@@ -15,7 +15,7 @@ const LoginModal = ({ closeModal, openRegisterModal }) => {
         try {
             const fetchUrl = config.api_login_url 
             console.log("fetchUrl: ",fetchUrl);
-             const response = await fetch (fetchUrl, {
+            const response = await fetch (fetchUrl, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"},

@@ -27,3 +27,14 @@ header{
     border: none;
     color: whitesmoke;
 }
+
+.welcome{
+    color: whitesmoke;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.356);
+    padding: 10px 20px ;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    transition: all ease-in-out 0.2s;
+}

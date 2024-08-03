@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import config from '../../config.js';
 import "./GeoLocation.css"
 import LoginModal from '../LoginModal/LoginModal';
 import RegisterModal from '../RegisterModal/RegisterModal';
+import { useSelector } from 'react-redux';
 
 const GeoLocationComponent = () => {
+  const user = useSelector(state => state.user)	
+
   const [location, setLocation] = useState(null);
   const [geoData, setgeoData] = useState({
 	nombreCiudad:"",
@@ -16,7 +20,6 @@ const GeoLocationComponent = () => {
   })
   const [loginModal, setLoginModal] = useState(false)
   const [registerModal, setRegisterModal] = useState(false)
-  const [sessionRunning, setSessionRunning] = useState(false)
 
   const handleLoginModal = () => {
 	(loginModal === false) ? setLoginModal(true) : setLoginModal(false)
@@ -42,7 +45,7 @@ const GeoLocationComponent = () => {
 	}, []);
 
 	useEffect(() => {
-		const apiUrl = process.env.REACT_APP_API_URL
+		const apiUrl = config.weather_api_url //process.env.REACT_APP_API_URL
 		if (location) {
 		const geolocation = `${location.latitude},${location.longitude}`;
 		const apiUrlGeo = apiUrl+geolocation
@@ -72,15 +75,15 @@ const GeoLocationComponent = () => {
 				<p><img src={geoData.icono} alt="icono"/>{geoData.temperatura}°C, {geoData.region}, {geoData.pais}</p>
 			)}
 		</div>
-		{sessionRunning ? (
+		{user.first_name ? (
 			<div>
-				Welcome
+				<p className='welcome mt-2 me-3'>Welcome {user.first_name}!</p>
 			</div>
 			) : (
 			<div className='me-3'>
 				<button className='loginButton mt-2 me-2' onClick={handleLoginModal}> Login </button>
 				<button className='registerButton' onClick={handleRegisterModal}> Register </button>
-				{loginModal && <LoginModal closeModal = {setLoginModal} openRegisterModal = {setRegisterModal} session = {setSessionRunning}/>}
+				{loginModal && <LoginModal closeModal = {setLoginModal} openRegisterModal = {setRegisterModal}/>}
 				{registerModal && <RegisterModal closeModal = {setRegisterModal} openLoginModal = {setLoginModal}/>}		
 			</div>		
 			)

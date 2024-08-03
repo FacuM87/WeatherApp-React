@@ -1,11 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import config from '../../config.js'
 import "./Form.css"
 import WeatherCard from '../WeatherCard/WeatherCard'
+import { useDispatch } from 'react-redux'
+import { login } from '../../redux/userSlice.js'
 
 
 const Form = () => {
+
+    const dispatch = useDispatch()
      
-    const apiUrl=process.env.REACT_APP_API_URL
+    const apiUrl= config.weather_api_url //process.env.REACT_APP_API_URL
     const [ciudad, setCiudad] = useState("")
     const [loader, setLoader] = useState(false)
     const [weatherData, setData] = useState({
@@ -39,6 +44,34 @@ const Form = () => {
                 setLoader(false)
             }        
     }
+
+    // const checkSession = async () => {
+    //     try {
+    //         const fetchUrl = process.env.REACT_APP_API_SESSION_URL
+    //          const response = await fetch (fetchUrl, {
+    //             method: "GET",
+    //             headers: {
+    //                 "Content-Type": "application/json"},
+    //         })
+    //         const data = await response.json()
+    //         console.log(data);
+    //         const userData = {
+    //             first_name: data.first_name,
+    //             last_name: data.last_name,
+    //             email: data.email,
+    //             role: data.role
+    //         };
+    //         console.log(userData);
+    //         dispatch(login(userData));
+
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // }
+    
+    // useEffect(() => {
+    //     checkSession()
+    // }, [])
 
     return (
         <main>

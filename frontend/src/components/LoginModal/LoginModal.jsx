@@ -1,14 +1,20 @@
 import React from "react"
+import config from "../../config.js"
 import googleIcon from "../../assets/googleIcon.png"
 import fbIcon from "../../assets/fbIcon.png"
 import "./LoginModal.css"
+import { useSelector, useDispatch } from "react-redux"
+import { login } from "../../redux/userSlice.js"
 
-const LoginModal = ({ closeModal, openRegisterModal, session }) => {
+const LoginModal = ({ closeModal, openRegisterModal }) => {
+    const user = useSelector((state) => state.user)
+    const dispatch = useDispatch()
 
     const handleOnSubmit = async (e) =>{
         e.preventDefault()
         try {
-            const fetchUrl = process.env.REACT_APP_API_LOGIN_URL
+            const fetchUrl = config.api_login_url //process.env.REACT_APP_API_LOGIN_URL
+            console.log("fetchUrl: ",fetchUrl);
              const response = await fetch (fetchUrl, {
                 method: "POST",
                 headers: {
@@ -20,9 +26,17 @@ const LoginModal = ({ closeModal, openRegisterModal, session }) => {
                 credentials: "include"
             })
             const data = await response.json()
-            console.log(data.status);
+            console.log(data);
             if (data.status === "success") {
-                session(true);
+                console.log(user);
+                const userData = {
+                    first_name: data.first_name,
+                    last_name: data.last_name,
+                    email: data.email,
+                    role: data.role
+                };
+                console.log(userData);
+                dispatch(login(userData));             
                 closeModal(false);
             }
             console.log("TOKEN: ",data.jwt);
@@ -42,11 +56,11 @@ const LoginModal = ({ closeModal, openRegisterModal, session }) => {
                 <h1 className="text-center">Login</h1>
                 <form className="d-flex flex-column p-3" onSubmit={handleOnSubmit}> 
                     <div className="form-floating mb-3">
-                        <input type="email" className="form-control" id="email" name="email" placeholder="Your email goes here" autoComplete="on"/>
+                        <input type="email" className="form-control" id="email" name="email" placeholder="Your email goes here" autoComplete="on" required/>
                         <label htmlFor="email">Email address</label>
                         </div>
                     <div className="form-floating">
-                        <input type="password" className="form-control" id="password" name="password" placeholder="Password" autoComplete="on"/>
+                        <input type="password" className="form-control" id="password" name="password" placeholder="Password" autoComplete="on" required/>
                         <label htmlFor="password">Password</label>
                     </div>
                     <button type="submit" className="loginBtn"> Login! </button>

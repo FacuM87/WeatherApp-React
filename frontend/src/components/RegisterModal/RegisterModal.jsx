@@ -1,12 +1,13 @@
 import React from 'react'
 import "./RegisterModal.css"
+import config from '../../config.js'
 
 const RegisterModal = ({closeModal}) => {
 
   	const handleOnSubmit = async (e) =>{
 		e.preventDefault()
 
-		const fetchUrl = process.env.REACT_APP_API_REGISTER_URL
+		const fetchUrl = config.api_register_url //process.env.REACT_APP_API_REGISTER_URL
 		try {
 			const response = await fetch(fetchUrl,{
 				method: "post",

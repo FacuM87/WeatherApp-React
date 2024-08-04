@@ -38,7 +38,7 @@ app.use(passport.initialize())
 
 /* API Route */
 app.get("/", (req, res) => {
-    res.send("API is running...")
+    res.send("API is running..")
 })
 app.use("/api/users", usersRouter)
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import "./RegisterModal.css"
 import config from '../../config.js'
 
-const RegisterModal = ({closeModal}) => {
+const RegisterModal = ({closeModal, openLoginModal}) => {
 	const [loading, setLoading] = useState(false)
 
   	const handleOnSubmit = async (e) =>{
@@ -62,14 +62,18 @@ const RegisterModal = ({closeModal}) => {
                         <label htmlFor="password">Password</label>
                     </div>
 					{
-						loading ? (
+						loading ? 
+						(
 							<div className="text-center mt-3">
 								<div className="spinner-border" role="status">
 								</div>
 							</div>
-						) 
-						
-						: <button type="submit" className="registerBtn"> Register! </button>
+						) : (
+							<div className='text-center'>
+								<button type="submit" className="registerBtn"> Register! </button>
+								<button onClick={() =>{ closeModal(false);openLoginModal(true)}} className="goLoginModal"><p>Already have an account? Login!</p></button>
+							</div>
+						)
 					}
 				</form>
 			</div>

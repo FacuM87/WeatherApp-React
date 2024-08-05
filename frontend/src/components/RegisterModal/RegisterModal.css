@@ -54,6 +54,20 @@
     padding-right: 15px;
 }
 
+.goLoginModal{
+    border: none;
+    background-color: transparent;
+    color: rgb(96, 96, 96);
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-right: 15px;
+}
+
+.goLoginModal p{
+    color: #6263F5;
+}
+
 /* .registerModalContainer{
     position: fixed;
     top: 50%;

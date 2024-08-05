@@ -66,7 +66,7 @@ const LoginModal = ({ closeModal, openRegisterModal }) => {
                     <button type="submit" className="loginBtn"> Login! </button>
                     <div className="otherOptions-container">
                         <div >
-                            <button type="button" onClick={() => { closeModal(false); openRegisterModal(true); }} className="registerBtn"><p>Don't have an account?</p></button>
+                            <button type="button" onClick={() => { closeModal(false); openRegisterModal(true); }} className=""><p>Don't have an account?</p></button>
                         </div>
                         <div >
                             <a href="http://"><p className="forgotPassword">Forgot password?</p></a>

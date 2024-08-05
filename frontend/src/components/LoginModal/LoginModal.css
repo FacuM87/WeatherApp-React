@@ -19,7 +19,7 @@
     transform: translate(-50%, -50%);
     background-color: rgb(217, 224, 230);
     border-radius: 20px;
-
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.7), 0 10px 20px rgba(0, 0, 0, 0.925);
 }
 
 .loginBtn{

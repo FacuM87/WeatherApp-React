@@ -33,14 +33,37 @@ const RegisterModal = ({closeModal}) => {
 	return (
 		<div className="registerModalContainer">
 			<div className="registerModalContent">
-				<button onClick={() => closeModal(false)}> X </button>
-				<form onSubmit={handleOnSubmit} className="d-flex flex-column" > 
-					<input type="text" name="first_name" autoComplete="off" placeholder="Name" required/>
+				<div className="closeRegisterModal-container">
+                    <button onClick={() => closeModal(false)} className="closeRegisterModalBtn"> X </button>
+                </div>
+				<h1 className="text-center mt-0">Register</h1>
+				<form onSubmit={handleOnSubmit} className="d-flex flex-column p-3" > 
+					<div className="form-floating mb-3">
+                        <input type="text" className="form-control" id="first_name" name="first_name" placeholder="Enter your name" autoComplete="on" required/>
+                        <label htmlFor="first_name">First Name</label>
+                    </div>
+                    <div className="form-floating mb-3">
+						<input type="text" className="form-control" id="last_name" name="last_name" placeholder="Enter your last name" autoComplete="on" required/>
+                        <label htmlFor="last_name">Last Name</label>
+                    </div>
+					<div className="form-floating mb-3">
+                        <input type="email" className="form-control" id="email" name="email" placeholder="Enter your email" autoComplete="on" required/>
+                        <label htmlFor="email">Email address</label>
+                    </div>
+					<div className="form-floating mb-3">
+                        <input type="number" className="form-control" id="age" name="age" placeholder="Enter your age" autoComplete="on" required/>
+                        <label htmlFor="age">Age</label>
+                    </div>
+					<div className="form-floating">
+                        <input type="password" className="form-control" id="password" name="password" placeholder="Enter your password" autoComplete="on" required/>
+                        <label htmlFor="password">Password</label>
+                    </div>
+					{/* <input type="text" name="first_name" autoComplete="off" placeholder="Name" required/>
 					<input type="text" name="last_name" autoComplete="off" placeholder="Last name" required/>
 					<input type="email" name="email" autoComplete="email" placeholder="Email" required/>
 					<input type="number" name="age" autoComplete="off" placeholder="Age" required/>
-					<input type="password" name="password" autoComplete="off" placeholder="Password" required/>
-					<button type="submit"> Register! </button>
+					<input type="password" name="password" autoComplete="off" placeholder="Password" required/> */}
+					<button type="submit" className="registerBtn"> Register! </button>
 				</form>
 			</div>
 		</div>

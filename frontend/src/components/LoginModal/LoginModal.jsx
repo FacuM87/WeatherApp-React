@@ -58,7 +58,7 @@ const LoginModal = ({ closeModal, openRegisterModal }) => {
                     <div className="form-floating mb-3">
                         <input type="email" className="form-control" id="email" name="email" placeholder="Your email goes here" autoComplete="on" required/>
                         <label htmlFor="email">Email address</label>
-                        </div>
+                    </div>
                     <div className="form-floating">
                         <input type="password" className="form-control" id="password" name="password" placeholder="Password" autoComplete="on" required/>
                         <label htmlFor="password">Password</label>

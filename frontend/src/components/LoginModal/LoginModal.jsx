@@ -13,7 +13,6 @@ const LoginModal = ({ closeModal, openRegisterModal }) => {
         e.preventDefault()
         try {
             const fetchUrl = config.api_login_url 
-            console.log("fetch Url: ",fetchUrl);
             const response = await fetch (fetchUrl, {
                 method: "POST",
                 headers: {

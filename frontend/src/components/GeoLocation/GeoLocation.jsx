@@ -105,11 +105,9 @@ const GeoLocationComponent = () => {
 			)}
 		</div>
 		{user.first_name ? (
-			<div className='d-flex'>
-				<div>
-					<p className='welcome mt-2 me-3'>Welcome {user.first_name}!</p>
-				</div>
-				<button className='logoutBtn me-2 p-0' onClick={logoutFunction}> Logout </button>
+			<div className='me-3'>
+				<button className='loginButton mt-2 me-2'> Welcome {user.first_name}! </button>
+				<button className='registerButton' onClick={logoutFunction}> Logout </button>
 			</div>
 			) : (
 			<div className='me-3'>

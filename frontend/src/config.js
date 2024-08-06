@@ -13,6 +13,7 @@ const config = {
 if (config.env === "production") {
     config.api_register_url = process.env.REACT_APP_PROD_API_REGISTER_URL;
     config.api_login_url = process.env.REACT_APP_PROD_API_LOGIN_URL;
+    config.api_logout_url = process.env.REACT_APP_PROD_API_LOGOUT_URL;
     config.api_session_url = process.env.REACT_APP_PROD_API_SESSION_URL;
 }
 

@@ -10,15 +10,11 @@ const config = {
     
 }
 
-console.log(config.env);
-
 if (config.env === "production") {
     config.api_register_url = process.env.REACT_APP_PROD_API_REGISTER_URL;
     config.api_login_url = process.env.REACT_APP_PROD_API_LOGIN_URL;
     config.api_session_url = process.env.REACT_APP_PROD_API_SESSION_URL;
 }
-
-console.log(config);
 
 export default config
 

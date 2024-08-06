@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import config from '../../config.js'
 import "./Form.css"
 import WeatherCard from '../WeatherCard/WeatherCard'
-import { useDispatch } from 'react-redux'
-import { login } from '../../redux/userSlice.js'
+// import { useDispatch } from 'react-redux'
+// import { login } from '../../redux/userSlice.js'
 
 
 const Form = () => {
 
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
      
     const apiUrl= config.weather_api_url 
     const [ciudad, setCiudad] = useState("")

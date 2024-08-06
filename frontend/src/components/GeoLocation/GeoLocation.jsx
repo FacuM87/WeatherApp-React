@@ -3,11 +3,49 @@ import config from '../../config.js';
 import "./GeoLocation.css"
 import LoginModal from '../LoginModal/LoginModal';
 import RegisterModal from '../RegisterModal/RegisterModal';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../redux/userSlice.js';
 
 const GeoLocationComponent = () => {
-  const user = useSelector(state => state.user)	
+  const user = useSelector(state => state.user)
+  const dispatch = useDispatch()	
 
+  const [loginModal, setLoginModal] = useState(false)
+  const [registerModal, setRegisterModal] = useState(false)
+
+  const handleLoginModal = () => {
+	(loginModal === false) ? setLoginModal(true) : setLoginModal(false)
+  }
+  const handleRegisterModal = () => {
+	(registerModal === false) ? setRegisterModal(true) : setRegisterModal(false)
+  }
+
+  const logoutFunction = async() => {
+	try {
+		const fetchUrl = config.api_logout_url
+		console.log("logout Url: ", fetchUrl);
+		const response = await fetch(fetchUrl, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			credentials: 'include'
+		})
+		if (response.ok){
+			const data = await response.json()
+			console.log(data)
+			dispatch(logout())
+			window.location.href = '/';
+		}
+		else {
+			console.log("Could not logout")
+		}
+	} catch (error) {
+		console.log(error);
+	}
+	
+  }
+  
   const [location, setLocation] = useState(null);
   const [geoData, setgeoData] = useState({
 	nombreCiudad:"",
@@ -18,16 +56,7 @@ const GeoLocationComponent = () => {
 	texto:"",
 	icono:""
   })
-  const [loginModal, setLoginModal] = useState(false)
-  const [registerModal, setRegisterModal] = useState(false)
 
-  const handleLoginModal = () => {
-	(loginModal === false) ? setLoginModal(true) : setLoginModal(false)
-  }
-  const handleRegisterModal = () => {
-	(registerModal === false) ? setRegisterModal(true) : setRegisterModal(false)
-  }
-  
   useEffect(() => {
       if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(
@@ -76,8 +105,11 @@ const GeoLocationComponent = () => {
 			)}
 		</div>
 		{user.first_name ? (
-			<div>
-				<p className='welcome mt-2 me-3'>Welcome {user.first_name}!</p>
+			<div className='d-flex'>
+				<div>
+					<p className='welcome mt-2 me-3'>Welcome {user.first_name}!</p>
+				</div>
+				<button className='logoutBtn me-2 p-0' onClick={logoutFunction}> Logout </button>
 			</div>
 			) : (
 			<div className='me-3'>

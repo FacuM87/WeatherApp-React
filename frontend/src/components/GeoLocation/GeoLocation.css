@@ -28,6 +28,13 @@ header{
     color: whitesmoke;
 }
 
+.logoutBtn {
+    background-color: transparent;
+    border: none;
+    color: whitesmoke;
+    cursor: pointer;
+}
+
 .welcome{
     color: whitesmoke;
     border-radius: 10px;

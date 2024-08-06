@@ -6,8 +6,8 @@ const config = {
     weather_api_url: process.env.REACT_APP_API_URL,
     api_register_url: process.env.REACT_APP_API_REGISTER_URL,
     api_login_url: process.env.REACT_APP_API_LOGIN_URL,
+    api_logout_url: process.env.REACT_APP_API_LOGOUT_URL,
     api_session_url: process.env.REACT_APP_API_SESSION_URL
-    
 }
 
 if (config.env === "production") {

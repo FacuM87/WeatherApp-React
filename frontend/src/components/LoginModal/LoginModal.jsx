@@ -3,11 +3,10 @@ import config from "../../config.js"
 import googleIcon from "../../assets/googleIcon.png"
 import fbIcon from "../../assets/fbIcon.png"
 import "./LoginModal.css"
-import { useSelector, useDispatch } from "react-redux"
+import { useDispatch } from "react-redux"
 import { login } from "../../redux/userSlice.js"
 
 const LoginModal = ({ closeModal, openRegisterModal }) => {
-    const user = useSelector((state) => state.user)
     const dispatch = useDispatch()
 
     const handleOnSubmit = async (e) =>{
@@ -26,20 +25,16 @@ const LoginModal = ({ closeModal, openRegisterModal }) => {
                 credentials: "include"
             })
             const data = await response.json()
-            console.log(data);
             if (data.status === "success") {
-                console.log(user);
                 const userData = {
                     first_name: data.first_name,
                     last_name: data.last_name,
                     email: data.email,
                     role: data.role
                 };
-                console.log(userData);
                 dispatch(login(userData));             
                 closeModal(false);
             }
-            console.log("TOKEN: ",data.jwt);
         } catch (error) {
             console.error("Login error: ",error);
         }

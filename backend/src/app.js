@@ -18,7 +18,7 @@ app.use(cookieParser())
 const allowedOrigin = config.origin
 console.log(allowedOrigin);
 //app.use(cors({credentials: true, origin: allowedOrigin}))
-app.use(cors({credentials: true, origin: "https://weather-app-react-facum87s-projects.vercel.app/"}))
+app.use(cors({credentials: true, origin: "https://weather-app-react-nsaq6z3ns-facum87s-projects.vercel.app/"}))
 
 /* Mongo DB connection */
 mongoose.connect(config.mongoUrl, {dbName: "weather-app"})

@@ -7,6 +7,7 @@ export const login = async (req, res) =>{
         if (!req.user) return res.status(401).json({status: "fail", message: "Invalid Credentials"})
         console.log(req.user);
         const {first_name, last_name, email, role, token } = req.user
+        
         return res.cookie("jwtCookie", token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 }).status(200).json({
             status: "success", jwt: token, first_name, last_name, email, role})
     } catch (error) {
@@ -50,6 +51,18 @@ export const getUserById = async (req, res) => {
     console.log("User ID: ", userId);    
     return res.send("llegamos aca")
     
+}
+
+export const googleLogin = async (req, res) => {
+    try {
+        if (!req.user) return res.status(401).json({status: "fail", message: "Invalid Credentials"})
+        console.log("Google Login: ", req.user);
+        const {first_name, last_name, email, role, token } = req.user
+        
+        return res.cookie("jwtCookie", token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 }).status(200).json({status: "success", jwt: token, first_name, last_name, email, role})
+    } catch (error) {
+        return res.status(500).json({status: "critic fail", message: "Internal server error. Couldnt login with google."})
+    }
 }
 export const updateUser = async (req, res) => {
 

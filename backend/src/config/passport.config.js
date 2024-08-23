@@ -88,13 +88,33 @@ const initializePassport = () => {
     passport.use("google", new GoogleStrategy({
         clientID: config.googleClientID,
         clientSecret: config.googleClientSecret,
-        callbackURL: "http://yourdomain:3000/auth/google/callback",
+        callbackURL: config.googleClientCallback,
         passReqToCallback   : true
-    },
-    function(request, accessToken, refreshToken, profile, done) {
-        User.findOrCreate({ googleId: profile.id }, function (err, user) {
-        return done(err, user);
-        });
+    }, async (request, accessToken, refreshToken, profile, done) => {
+        console.log(profile);
+        try {
+            const email = profile.emails[0].value
+            const user = await MongoManager.getUserByEmail(email)
+            if (user) {
+                user.token = generateToken(user)
+                return done(null, user)
+            }
+
+            const [firstName, lastName] = profile.displayName.split(" ");
+            const newUser = {
+                first_name: firstName,
+                last_name: lastName,
+                email: email,
+                age: "",
+                password: ""
+            }
+            const result = await MongoManager.createUser(newUser)
+            
+            newUser.token = generateToken(newUser)
+            return done(null, result)
+        } catch (error) {
+            return done("Passport Google Error: " + error)
+        }
     }
     ));
 

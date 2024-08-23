@@ -10,6 +10,7 @@ const config = {
     jwtSign: process.env.JWT_SIGN,
     googleClientID: process.env.GOOGLE_CLIENT_ID,
     googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    googleClientCallback: process.env.GOOGLE_CLIENT_CALLBACK_URL,
     mailService: process.env.MAIL_SERVICE,
     mailUser: process.env.MAIL_USER,
     mailPass: process.env.MAIL_PASS,
@@ -19,6 +20,7 @@ const config = {
 
 if (process.env.NODE_ENV === "production") {
     config.origin = process.env.PROD_ALLOWED_ORIGIN
+    config.googleClientCallback = process.env.PROD_GOOGLE_CLIENT_CALLBACK_URL
 }
 
 export default config

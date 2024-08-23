@@ -41,6 +41,10 @@ const LoginModal = ({ closeModal, openRegisterModal }) => {
         }
     }
 
+    const handleGoogleLogin = async () => {
+        window.location.href = config.api_google_login_url;
+    }
+
     return (
         <div className="loginModalContainer">
         
@@ -71,7 +75,7 @@ const LoginModal = ({ closeModal, openRegisterModal }) => {
                     <div className="separator"></div>
                     <p className="text-center text-dark mb-2">or sign in with:</p>
                     <div className="socialButtons">
-                        <button className="socialButton googleButton">
+                        <button className="socialButton googleButton" onClick={handleGoogleLogin}>
                             <img src={googleIcon} alt="Google Icon" className="me-1"/>
                             <p className="text-dark">Google</p>  
                         </button>

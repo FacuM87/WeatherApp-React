@@ -30,7 +30,7 @@ function App() {
                     console.log('User needs to login');
                 }
             } catch (error) {
-                console.error('Error verifying token:', error);
+                console.error('Error verifying token:', error)
             }
         };
         

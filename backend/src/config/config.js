@@ -15,4 +15,8 @@ const config = {
     origin: process.env.DEV_ALLOWED_ORIGIN
 }
 
+if(config.env != "dev"){
+    config.origin = process.env.PROD_ALLOWED_ORIGIN
+}
+
 export default config

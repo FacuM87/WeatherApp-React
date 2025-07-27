@@ -1,5 +1,5 @@
 import MongoUserManager from "../dao/mongo/managers/users.manager.js";
-import { generateToken, validatePassword } from "../utils.js";
+import { generateToken, validatePassword, verifyToken } from "../utils.js";
 
 const userManager = new MongoUserManager
 
@@ -32,5 +32,25 @@ export const logout = async(req, res) =>{
     } catch (error) {
         console.error("Internal server error. Couldn't logout");
         res.status(500).json({status:"fail", message:"Internal server error. Couldn't logout"})
+    }
+}
+
+export const checkToken = async(req, res) =>{
+    try {
+        const token = req.cookies.jwt
+        console.log(token);
+        
+        if (!token) {
+            return res.status(401).json({ status: "fail", message: "User needs to login" });
+        }
+
+        const userData = verifyToken(token);
+        
+        const { password: _, ...user } = userData.user;
+        res.status(200).json({ status: "success", payload: user });
+    } catch (error) {
+        console.error("Internal server error. Couldn't check token");
+        res.status(500).json({status:"fail", message:"Internal server error. Couldn't check token"})
+      
     }
 }

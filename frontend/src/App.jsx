@@ -23,11 +23,12 @@ function App() {
                 });
                 if (response.ok) {
                     const data = await response.json();
+                    
                     if (data.status === 'success') {
-                        dispatch(login(data.userData.user));
+                        dispatch(login(data.payload));
                     }
                 } else if (response.status === 401) {
-                    console.log('User needs to login');
+                    console.log('Please login');
                 }
             } catch (error) {
                 console.error('Error verifying token:', error)

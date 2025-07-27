@@ -20,7 +20,6 @@ const RegisterModal = ({closeModal, openLoginModal}) => {
 					first_name: e.target.elements.first_name.value,
 					last_name: e.target.elements.last_name.value,
 					email: e.target.elements.email.value,
-					age: e.target.elements.age.value,
 					password: e.target.elements.password.value,
 				})
 			})
@@ -29,7 +28,7 @@ const RegisterModal = ({closeModal, openLoginModal}) => {
 			console.log(data.status);
 
 		} catch (error) {
-			console.log(error);
+			console.error(error);
 		}
   	}
 

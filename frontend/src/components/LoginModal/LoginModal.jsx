@@ -1,4 +1,3 @@
-import React from "react"
 import config from "../../config.js"
 import googleIcon from "../../assets/googleIcon.png"
 import fbIcon from "../../assets/fbIcon.png"
@@ -13,7 +12,6 @@ const LoginModal = ({ closeModal, openRegisterModal }) => {
         e.preventDefault()
         try {
             const fetchUrl = config.api_login_url
-            console.log("login Url: ", fetchUrl);
              
             const response = await fetch (fetchUrl, {
                 method: "POST",
@@ -26,13 +24,16 @@ const LoginModal = ({ closeModal, openRegisterModal }) => {
                 credentials: "include"
             })
             const data = await response.json()
+                        
             if (data.status === "success") {
                 const userData = {
-                    first_name: data.first_name,
-                    last_name: data.last_name,
-                    email: data.email,
-                    role: data.role
+                    first_name: data.payload.first_name,
+                    last_name: data.payload.last_name,
+                    email: data.payload.email,
+                    role: data.payload.role
                 };
+                console.log(userData);
+                
                 dispatch(login(userData));             
                 closeModal(false);
             }

@@ -53,10 +53,6 @@ const RegisterModal = ({closeModal, openLoginModal}) => {
                         <input type="email" className="form-control" id="email" name="email" placeholder="Enter your email" autoComplete="on" required/>
                         <label htmlFor="email">Email address</label>
                     </div>
-					<div className="form-floating mb-3">
-                        <input type="number" className="form-control" id="age" name="age" placeholder="Enter your age" autoComplete="on" required/>
-                        <label htmlFor="age">Age</label>
-                    </div>
 					<div className="form-floating">
                         <input type="password" className="form-control" id="password" name="password" placeholder="Enter your password" autoComplete="on" required/>
                         <label htmlFor="password">Password</label>

@@ -1,0 +1,36 @@
+import MongoUserManager from "../dao/mongo/managers/users.manager.js";
+import { generateToken, validatePassword } from "../utils.js";
+
+const userManager = new MongoUserManager
+
+export const login = async(req, res) =>{
+    try {
+        const {email, password} = req.body
+
+        const existingUser = await userManager.getUserByEmail(email)
+        
+        if(!existingUser || !validatePassword(password, existingUser)){
+            return res.status(401).json({status: "fail", message:"Invalid Credentials"})
+        }
+
+        const token = generateToken(existingUser)
+        res.cookie('jwt', token, {httpOnly: true, sameSite: 'strict'});
+        
+        const { password: _, ...userWithoutPassword } = existingUser;
+        res.status(200).json({ status: "success", message: "Login successful", payload: userWithoutPassword });
+
+    } catch (error) {
+        console.error("Internal server error. Couldn't login");
+        res.status(500).json({status:"fail", message:"Internal server error. Couldn't login"})
+    }
+}
+
+export const logout = async(req, res) =>{
+    try {
+        res.clearCookie('jwt')
+        res.status(200).json({status:"success", message:"Logout successful"})
+    } catch (error) {
+        console.error("Internal server error. Couldn't logout");
+        res.status(500).json({status:"fail", message:"Internal server error. Couldn't logout"})
+    }
+}

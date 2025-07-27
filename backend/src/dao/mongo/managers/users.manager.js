@@ -4,17 +4,21 @@ class MongoUserManager{
     constructor(){
         this.model = UserModel
     }
-   
-    createUser = async (newUser) => {
-        return await UserModel.create(newUser)
-    }
 
+    getUsers = async() =>{
+        return await UserModel.find()
+    }
+    
     getUserByEmail = async (username) => {
         return await UserModel.findOne({ email: username }).lean().exec()
     }
 
     getUserById = async (id) => {
         return await UserModel.findById(id)
+    }
+
+    createUser = async (newUser) => {
+        return await UserModel.create(newUser)
     }
 
     updateUser = async (email, changes) => {

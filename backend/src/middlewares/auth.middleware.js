@@ -1,6 +1,23 @@
+import { verifyToken } from "../utils.js";
 
-export const auth = (req, res, next) => {
-    console.log("auth object: ", req.user);
-    (req.user?.role === "admin")? next() : res.status(401).json({status: "fail", message: "User is not allowed to access this endpoint"})
+
+export const auth = (roles) =>{
+  return  (req, res, next) => {
+    try {
+      const token = req.cookies.jwt;
+      const userData = verifyToken(token);
+      const user = userData.user;
+
+      if (!user || !roles.includes(user.role)) {
+        return res.status(403).json({ message: "Access denied" });
+      }
+
+      req.user = user;
+      next();
+    } catch (error) {
+      console.error("Authentication error: ", error.message);
+      return res.status(401).json({ message: "Invalid or expired token" });
+    }
 }
 
+}

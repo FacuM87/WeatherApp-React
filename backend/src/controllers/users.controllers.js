@@ -72,7 +72,7 @@ export const createAdminUser = async (req,res) =>{
         
         res.status(200).json({status: 'success', message:'Admin User created'})
     } catch (error) {
-        console.error('Couldnt create new user: ', error);
+        console.error('Couldnt create new admin user: ', error);
         res.status(500).json({status:'fail', message:'Internal server error. Couldn create new admin user'})
     }
 }

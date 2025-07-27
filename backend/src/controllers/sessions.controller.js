@@ -14,7 +14,7 @@ export const login = async(req, res) =>{
         }
 
         const token = generateToken(existingUser)
-        res.cookie('jwt', token, {httpOnly: true, sameSite: 'strict'});
+        res.cookie('jwt', token, {httpOnly: true});
         
         const { password: _, ...userWithoutPassword } = existingUser;
         res.status(200).json({ status: "success", message: "Login successful", payload: userWithoutPassword });

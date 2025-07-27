@@ -8,12 +8,13 @@ const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
-app.use(cors())
+app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true
+}))
 await connectToMongo()
 
-
 app.use('/', indexRouter)
-
 
 app.listen(config.port, async ()=>{
     console.log("Server running in ", config.port);

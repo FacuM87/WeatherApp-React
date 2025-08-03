@@ -1,6 +1,7 @@
 import config from "../../config.js"
-import googleIcon from "../../assets/googleIcon.png"
+// import googleIcon from "../../assets/googleIcon.png"
 // import fbIcon from "../../assets/fbIcon.png"
+import { GoogleLogin } from "@react-oauth/google"
 import "./LoginModal.css"
 import { useDispatch } from "react-redux"
 import { login } from "../../redux/userSlice.js"
@@ -11,7 +12,8 @@ const LoginModal = ({ closeModal, openRegisterModal }) => {
     const handleOnSubmit = async (e) =>{
         e.preventDefault()
         try {
-            const fetchUrl = config.api_login_url
+            const fetchUrl = config.api_google_login_url
+            console.log(fetchUrl);
              
             const response = await fetch (fetchUrl, {
                 method: "POST",
@@ -42,9 +44,36 @@ const LoginModal = ({ closeModal, openRegisterModal }) => {
         }
     }
 
-    const handleGoogleLogin = async () => {
-        window.location.href = config.api_google_login_url;
+    const handleGoogleLogin = async (credentialResponse) => {        
+        try {
+            const fetchUrl = config.api_google_login_url
+            const response = await fetch (fetchUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"},
+                body: JSON.stringify({
+                    googleToken: credentialResponse.credential
+                }),
+                credentials: "include"
+            })
+            const data = await response.json()
+            
+            if (data.status === "success") {
+                const userData = {
+                    first_name: data.payload.first_name,
+                    last_name: data.payload.last_name,
+                    email: data.payload.email,
+                    role: data.payload.role
+                };
+                console.log(userData);
+                dispatch(login(userData));             
+                closeModal(false);
+            }
+        } catch (error) {
+            console.error("Login error: ",error);
+        }
     }
+
 
     return (
         <div className="loginModalContainer">
@@ -74,12 +103,13 @@ const LoginModal = ({ closeModal, openRegisterModal }) => {
                         </div>
                     </div>
                     <div className="separator"></div>
-                    <p className="text-center text-dark mb-2">or sign in with:</p>
+                    <p className="text-center text-dark mb-2">or:</p>
                     <div className="socialButtons">
-                        <button className="socialButton googleButton" onClick={handleGoogleLogin}>
+                        <GoogleLogin shape="pill" locale="en" onSuccess={handleGoogleLogin} onError={() => {console.error("Google login error")}}/>
+                        {/* <button className="socialButton googleButton" onClick={loginWithGoogle}>
                             <img src={googleIcon} alt="Google Icon" className="me-1"/>
                             <p className="text-dark">Google</p>  
-                        </button>
+                        </button> */}
                         {/* <button className="socialButton facebookButton">
                             <img src={fbIcon} alt="Facebook Icon" className="me-1"/>
                             <p className="text-dark">Facebook</p>

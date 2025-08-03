@@ -8,6 +8,7 @@ const config = {
     api_login_url: process.env.REACT_APP_API_LOGIN_URL,
     api_logout_url: process.env.REACT_APP_API_LOGOUT_URL,
     api_session_url: process.env.REACT_APP_API_SESSION_URL,
+    googleOAuth_id: process.env.REACT_APP_GOOGLE_OAUTH_ID,
     api_google_login_url: process.env.REACT_APP_GOOGLE_LOGIN_URL
 }
 

@@ -12,7 +12,7 @@ const LoginModal = ({ closeModal, openRegisterModal }) => {
     const handleOnSubmit = async (e) =>{
         e.preventDefault()
         try {
-            const fetchUrl = config.api_google_login_url
+            const fetchUrl = config.api_login_url
              
             const response = await fetch (fetchUrl, {
                 method: "POST",

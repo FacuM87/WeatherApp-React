@@ -1,6 +1,6 @@
 import config from "../../config.js"
 import googleIcon from "../../assets/googleIcon.png"
-import fbIcon from "../../assets/fbIcon.png"
+// import fbIcon from "../../assets/fbIcon.png"
 import "./LoginModal.css"
 import { useDispatch } from "react-redux"
 import { login } from "../../redux/userSlice.js"
@@ -80,10 +80,10 @@ const LoginModal = ({ closeModal, openRegisterModal }) => {
                             <img src={googleIcon} alt="Google Icon" className="me-1"/>
                             <p className="text-dark">Google</p>  
                         </button>
-                        <button className="socialButton facebookButton">
+                        {/* <button className="socialButton facebookButton">
                             <img src={fbIcon} alt="Facebook Icon" className="me-1"/>
                             <p className="text-dark">Facebook</p>
-                            </button>
+                            </button> */}
                     </div>
                 </form>
             </div>

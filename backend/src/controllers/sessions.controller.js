@@ -1,5 +1,5 @@
 import MongoUserManager from "../dao/mongo/managers/users.manager.js";
-import { generateToken, validatePassword, verifyToken } from "../utils.js";
+import { generateToken, validatePassword, verifyGoogleToken, verifyToken } from "../utils.js";
 
 const userManager = new MongoUserManager
 
@@ -52,5 +52,38 @@ export const checkToken = async(req, res) =>{
         console.error("Internal server error. Couldn't check token");
         res.status(500).json({status:"fail", message:"Internal server error. Couldn't check token"})
       
+    }
+}
+
+export const googleLogin = async (req, res) =>{
+    const {googleToken} = req.body 
+    try {
+        const { first_name, last_name, email, picture } = await verifyGoogleToken(googleToken);
+        console.log("first_name: ", first_name, "last_name: ", last_name, "email: ", email, "picture: ", picture);
+        
+
+        let existingUser = await userManager.getUserByEmail(email)
+        if(!existingUser){
+            const newUser = {
+                first_name,
+                last_name,
+                email,
+                password: '',
+                picture,
+            }
+            await userManager.createUser(newUser)
+            existingUser = await userManager.getUserByEmail(email)
+        }
+        
+        console.log("user: ",existingUser);   
+        const jwtCookie = generateToken(existingUser)
+        res.cookie('jwt', jwtCookie, {httpOnly: true});
+
+        const { password: _, ...userWithoutPassword } = existingUser;
+        res.status(200).json({ status: "success", message: "Login successful", payload: userWithoutPassword });
+
+    } catch (error) {
+        console.error("Internal server error. Couldn't login with google: ", error);
+        res.status(500).json({status:"fail", message:"Internal server error. Couldn't login with google"})
     }
 }

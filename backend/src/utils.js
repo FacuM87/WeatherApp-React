@@ -2,6 +2,7 @@ import {fileURLToPath} from 'url'
 import { dirname } from 'path'
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
+import { OAuth2Client } from "google-auth-library"
 import config from './config/config.js'
 
 /* DIRNAME */
@@ -38,3 +39,23 @@ export const verifyToken = (token) =>{
     }
 
 }
+
+/* GOOGLE AUTH */
+
+const client = new OAuth2Client(config.googleOAuth_id);
+export const verifyGoogleToken = async (idToken) => {
+  const ticket = await client.verifyIdToken({
+    idToken,
+    audience: config.googleOAuth_id
+  });
+
+  const payload = ticket.getPayload();
+  console.log(payload);
+  
+  return {        
+    email: payload.email,
+    first_name: payload.given_name,
+    last_name: payload.family_name,
+    picture: payload.picture? payload.picture : null,
+  };
+};

@@ -12,7 +12,8 @@ const config = {
     mailUser: process.env.MAIL_USER,
     mailPass: process.env.MAIL_PASS,
     mailPort: process.env.MAIL_PORT,
-    origin: process.env.DEV_ALLOWED_ORIGIN
+    origin: process.env.DEV_ALLOWED_ORIGIN,
+    googleOAuth_id: process.env.GOOGLE_OAUTH_ID
 }
 
 if(config.env != "dev"){

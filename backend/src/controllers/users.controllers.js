@@ -1,4 +1,5 @@
 import MongoUserManager from "../dao/mongo/managers/users.manager.js"
+import Mail from "../modules/mailer.config.js"
 import { createHash } from "../utils.js"
 
 const userManager = new MongoUserManager
@@ -49,6 +50,9 @@ export const createUser = async (req,res) =>{
 
         await userManager.createUser(newUser)
         
+        const mailer = new Mail()
+        await mailer.sendRegisterConfirmationMail(user.first_name, user.email, user.password)
+
         res.status(200).json({status: 'success', message:'User created'})
     } catch (error) {
         console.error('Couldnt create new user: ', error);

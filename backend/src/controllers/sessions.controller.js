@@ -14,7 +14,7 @@ export const login = async(req, res) =>{
         }
 
         const token = generateToken(existingUser)
-        res.cookie('jwt', token, {httpOnly: true});
+        res.cookie('jwt', token, {httpOnly: true, sameSite: "none", secure: true});
         
         const { password: _, ...userWithoutPassword } = existingUser;
         res.status(200).json({ status: "success", message: "Login successful", payload: userWithoutPassword });
@@ -74,7 +74,7 @@ export const googleLogin = async (req, res) =>{
         }
 
         const jwtCookie = generateToken(existingUser)
-        res.cookie('jwt', jwtCookie, {httpOnly: true});
+        res.cookie('jwt', jwtCookie, {httpOnly: true, sameSite: "none", secure: true});
 
         const { password: _, ...userWithoutPassword } = existingUser;
         res.status(200).json({ status: "success", message: "Login successful", payload: userWithoutPassword });

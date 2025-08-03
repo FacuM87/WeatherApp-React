@@ -1,44 +1,23 @@
-import express from "express"
-import mongoose from "mongoose"
-import cookieParser from "cookie-parser"
+import express from 'express'
+import cookieParser from 'cookie-parser'
 import config from "./config/config.js"
-import usersRouter from "./router/users.router.js"
-import passport from "passport"
-import initializePassport from "./config/passport.config.js"
-import cors from "cors"
+import { connectToMongo } from './dao/mongo/mongo.connect.js'
+import cors from 'cors'
+import indexRouter from './router/index.router.js'
 
-
-/* Express and other middlewares setup */
 const app = express()
+
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
+app.use(cors({
+    origin: config.origin,
+    credentials: true
+}))
+await connectToMongo()
 
-/* CORS */
-const allowedOrigin = config.origin
-console.log(allowedOrigin);
-app.use(cors({credentials: true, origin: allowedOrigin}))
-//app.use(cors({credentials: true, origin: "https://weather-app-react-rho-tawny.vercel.app"}))
+app.use('/', indexRouter)
 
-/* Mongo DB connection */
-mongoose.connect(config.mongoUrl, {dbName: "weather-app"})
-    .then(() => {
-        console.log("Mongo DB connected")
-    })
-    .catch(e => {
-        console.log("Couldnt connect with Mongo DB, error message: "+e);
-        res.status(500).send(e)
-    })
-
-
-/* Passport */
-initializePassport()
-app.use(passport.initialize())
-
-
-/* API Route */
-app.get("/", (req, res) => {res.send("API is running..")})
-app.use("/api/users", usersRouter)
-
-const port=config.port
-app.listen(port, () => console.log("Server running on port "+port))
+app.listen(config.port, async ()=>{
+    console.log("Server running in ", config.port);
+})

@@ -20,7 +20,6 @@ const RegisterModal = ({closeModal, openLoginModal}) => {
 					first_name: e.target.elements.first_name.value,
 					last_name: e.target.elements.last_name.value,
 					email: e.target.elements.email.value,
-					age: e.target.elements.age.value,
 					password: e.target.elements.password.value,
 				})
 			})
@@ -29,7 +28,7 @@ const RegisterModal = ({closeModal, openLoginModal}) => {
 			console.log(data.status);
 
 		} catch (error) {
-			console.log(error);
+			console.error(error);
 		}
   	}
 
@@ -52,10 +51,6 @@ const RegisterModal = ({closeModal, openLoginModal}) => {
 					<div className="form-floating mb-3">
                         <input type="email" className="form-control" id="email" name="email" placeholder="Enter your email" autoComplete="on" required/>
                         <label htmlFor="email">Email address</label>
-                    </div>
-					<div className="form-floating mb-3">
-                        <input type="number" className="form-control" id="age" name="age" placeholder="Enter your age" autoComplete="on" required/>
-                        <label htmlFor="age">Age</label>
                     </div>
 					<div className="form-floating">
                         <input type="password" className="form-control" id="password" name="password" placeholder="Enter your password" autoComplete="on" required/>

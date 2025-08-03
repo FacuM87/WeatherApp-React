@@ -13,7 +13,6 @@ const LoginModal = ({ closeModal, openRegisterModal }) => {
         e.preventDefault()
         try {
             const fetchUrl = config.api_google_login_url
-            console.log(fetchUrl);
              
             const response = await fetch (fetchUrl, {
                 method: "POST",
@@ -47,6 +46,8 @@ const LoginModal = ({ closeModal, openRegisterModal }) => {
     const handleGoogleLogin = async (credentialResponse) => {        
         try {
             const fetchUrl = config.api_google_login_url
+            console.log(fetchUrl);
+            
             const response = await fetch (fetchUrl, {
                 method: "POST",
                 headers: {

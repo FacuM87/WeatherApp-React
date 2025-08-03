@@ -59,8 +59,6 @@ export const googleLogin = async (req, res) =>{
     const {googleToken} = req.body 
     try {
         const { first_name, last_name, email, picture } = await verifyGoogleToken(googleToken);
-        console.log("first_name: ", first_name, "last_name: ", last_name, "email: ", email, "picture: ", picture);
-        
 
         let existingUser = await userManager.getUserByEmail(email)
         if(!existingUser){
@@ -74,8 +72,7 @@ export const googleLogin = async (req, res) =>{
             await userManager.createUser(newUser)
             existingUser = await userManager.getUserByEmail(email)
         }
-        
-        console.log("user: ",existingUser);   
+
         const jwtCookie = generateToken(existingUser)
         res.cookie('jwt', jwtCookie, {httpOnly: true});
 

@@ -27,7 +27,7 @@ export const login = async(req, res) =>{
 
 export const logout = async(req, res) =>{
     try {
-        res.clearCookie('jwt')
+        res.clearCookie('jwt', {httpOnly: true, sameSite: "none", secure: true});
         res.status(200).json({status:"success", message:"Logout successful"})
     } catch (error) {
         console.error("Internal server error. Couldn't logout");

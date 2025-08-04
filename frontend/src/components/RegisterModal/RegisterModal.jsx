@@ -4,6 +4,7 @@ import config from '../../config.js'
 
 const RegisterModal = ({closeModal, openLoginModal}) => {
 	const [loading, setLoading] = useState(false)
+	const [showConfirmationModal, setShowConfirmationModal] = useState(false)
 
   	const handleOnSubmit = async (e) =>{
 		e.preventDefault()
@@ -24,6 +25,10 @@ const RegisterModal = ({closeModal, openLoginModal}) => {
 				})
 			})
 			const data = await response.json()
+
+			if (data.status === "success") {
+				setShowConfirmationModal(true)
+			}
 			setLoading(false)
 			console.log(data.status);
 
@@ -72,6 +77,19 @@ const RegisterModal = ({closeModal, openLoginModal}) => {
 					}
 				</form>
 			</div>
+			{
+				showConfirmationModal && 
+				(
+					<div className="confirmation-modal">
+						<div className="confirmation-modal-content">
+							<h3 className='text-center'>User has been registered!</h3>
+							<p>An email has been sent to your email address.</p>
+							<p>You can now login with your credentials.</p>
+							<button className="confirmation-modal-btn" onClick={() =>{setShowConfirmationModal(false); closeModal(false); openLoginModal(true)} }>Close</button>
+						</div>
+					</div>
+				)
+			}
 		</div>
 	)
 }

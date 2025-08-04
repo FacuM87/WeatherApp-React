@@ -68,7 +68,7 @@
     color: #6263F5;
 }
 
-/* .registerModalContainer{
+.confirmation-modal{
     position: fixed;
     top: 50%;
     left: 50%;
@@ -79,9 +79,12 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.registerModalContent{
+.confirmation-modal-content{
+    display: flex;
+    flex-direction: column;
     width: fit-content;
     height: fit-content;
+    padding: 20px;
     min-width: 500px;
     position: absolute;
     top: 50%;
@@ -89,39 +92,27 @@
     transform: translate(-50%, -50%);
     background-color: rgb(217, 224, 230);
     border-radius: 20px;
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.7), 0 10px 20px rgba(0, 0, 0, 0.925);
 }
 
-.registerBtn{
+.confirmation-modal-content p{
+    text-align: center;
+    color: #6263F5;
+}
+
+.confirmation-modal-btn{
     border: none;
     background-color: white;
     color: black;
     width: 50%;
-    margin: auto;
-    margin-top: 10px;
+    margin: 0 auto;
+    margin-top: 20px;
     margin-bottom: 10px;
     border-radius: 10px;
     padding: 10px;
     transition: all ease-in-out 0.2s;
 }
 
-.registerBtn:hover{
+.confirmation-modal-btn:hover{
     background-color: #bcc5cd;
 }
-
-.closeRegisterModal-container{
-    text-align: right;
-}
-
-.closeRegisterModalBtn{
-    border: none;
-    background-color: transparent;
-    color: rgb(96, 96, 96);
-    margin-bottom: 10px;
-    border-radius: 10px;
-    padding-top: 10px;
-    padding-right: 15px;
-}
-
-.form-floating {
-    margin-bottom: 10px;
-} */
